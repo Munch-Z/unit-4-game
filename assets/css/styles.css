@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body{
+    background-image: url("../images/background.jpg");
+    color: white;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+.imgStyles {
+    width: 175px;
+    height: 175px;
+    border-radius: 25%;
+}
+
+#fightBtn {
+    margin: 0 auto;
+}
+
+#gameSpace {
+    display: flex;
+    justify-content: space-between;
+}
+
