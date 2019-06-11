@@ -11,7 +11,6 @@ let computerHealthHTML = document.getElementById("computerHealth");
 
 let chars = {
 "peas": {
-     name: "peas",
      attack : 5,
      health : 100,
      counterAttack : 10,
@@ -73,6 +72,11 @@ function resetGame() {
     defeatedEnemies = 0;
 
      $("#playNow").show();
+     $('#imgsDiv').append('<img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas">');
+     $('#imgsDiv').append('<img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli">');
+     $('#imgsDiv').append('<img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit">');
+     $('#imgsDiv').append('<img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots">');
+     $('#imgsDiv').append('<img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato">');
      console.log("I reset everything but you didn't update the HTML.");
 }
 
@@ -92,7 +96,8 @@ $("#fightBtn").click( () => {
     if (newAttack > chars[player].attack) {
         chars[computer].health -= newAttack;
         if (chars[computer].health <= 0) {
-            defeatedEnemies++;         
+            defeatedEnemies++;
+            $("#computerDiv").children("img").detach();       
         }
 
     } else {
@@ -100,15 +105,16 @@ $("#fightBtn").click( () => {
     }
 
     //updates HTML with stats real-time.
-    playerAttackHTML.textContent = "Attack Power: " + newAttack;
-    playerHealthHTML.textContent = "Health Points: " + chars[player].health;
+    $("#playerAttack").text("Attack Power: " + newAttack);
+    $("#playerHP").text("Health Points: " + chars[player].health);
 
-    counterAttackHTML.textContent = "Counter Attack Power: " + chars[computer].counterAttack;
-    computerHealthHTML.textContent = "Health Points: " + chars[computer].health;
+    $("#computerCounterAttack").text("Counter Attack Power: " + chars[computer].counterAttack);
+    $("#computerHealth").text("Health Points: " + chars[computer].health);
     
     //win condition
     if (defeatedEnemies >= 4) {
         alert("You won!");
+        $("#playerDiv").children("img").detach();
         resetGame();
     }
 };
