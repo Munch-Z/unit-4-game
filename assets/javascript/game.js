@@ -34,14 +34,22 @@ let chars = {
     attack : 5,
     health : 100,
     counterAttack : 10,
+    
   }
 };
 
 let defeatedEnemies = 0;
 let newAttack = 0;
+let gameRunning = false;
+
+
 
 function resetGame() {
-    
+    //removes remaining images
+  $("#imgsDiv").children("img").detach();
+  $("#playerDiv").children("img").detach();
+  $("#computerDiv").children("img").detach();
+
     //resetsObjects
     chars["peas"].attack = 5;
     chars["peas"].health = 150;
@@ -72,13 +80,36 @@ function resetGame() {
     defeatedEnemies = 0;
 
      $("#playNow").show();
-     $('#imgsDiv').append('<img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas">');
-     $('#imgsDiv').append('<img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli">');
-     $('#imgsDiv').append('<img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit">');
-     $('#imgsDiv').append('<img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots">');
-     $('#imgsDiv').append('<img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato">');
-     console.log("I reset everything but you didn't update the HTML.");
+
+     //re-adds images to top div
+     $('#imgsDiv').html('<img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas"><img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli"> <img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit"> <img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots"> <img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato">');
+
+
+    //  $('#imgsDiv').append('<img src="assets/images/peas.jpeg" id="peas" alt="peas">').addClass("imgStyles");
+    //  $('#imgsDiv').append('<img src="assets/images/broccoli.jpeg" id="broccoli" alt="broccoli">').addClass("imgStyles");
+    //  $('#imgsDiv').append('<img src="assets/images/dragonfruit.jpeg" id="dragonfruit" alt="dragonfruit">').addClass("imgStyles");
+    //  $('#imgsDiv').append('<img src="assets/images/carrots.jpeg" id="carrots" alt="carrots">').addClass("imgStyles");
+    //  $('#imgsDiv').append('<img src="assets/images/tomato.jpeg" id="tomato" alt="tomato">').addClass("imgStyles");
+     
+     //resets text areas
+     playerAttackHTML.textContent = "";
+     playerHealthHTML.textContent = "";
+     counterAttackHTML.textContent = "";
+     computerHealthHTML.textContent = "";
+     $("#alertSpace").text('');
+
+     gameRunning = false;
 }
+
+$("#playNow").on("click", () => {
+  gameRunning = true;
+  $("#fightBtn").show();
+  $("#alertSpace").text('Pick your VEGETABLE (or Dragonfruit, if you\'re into that sort of thing.');
+  $("#playNow").hide();
+  console.log(gameRunning);
+})
+
+$("#fightBtn").hide();
 
 $("#fightBtn").click( () => {
     battleFunction($("#playerDiv").children("img").attr("id"), $("#computerDiv").children("img").attr("id"));
@@ -117,22 +148,36 @@ $("#fightBtn").click( () => {
         $("#playerDiv").children("img").detach();
         resetGame();
     }
+
+    if (chars[player].health <= 0) {
+      alert("You lost!");
+      resetGame();
+    }
 };
 
 //puts images in their respective sides of the screen on click
-$(".imgStyles").click(function (event) {
 
-    if ($("#playerDiv").find('img').length == 1 && $("#computerDiv").find('img').length === 0) {
+
+
+  $(".imgStyles").click(function (event) {
+    console.log("I detected the class of imgStyles being clicked");
+    
+    if (gameRunning){
+      
+      if ($("#playerDiv").find('img').length == 1 && $("#computerDiv").find('img').length === 0) {
+        console.log("I'm working, you're just an idiot.")
         computerSelected = event.target.id;
         $(event.currentTarget).appendTo("#computerDiv");
         counterAttackHTML.textContent = "Counter Attack Power: " + chars[computerSelected].counterAttack;
         computerHealthHTML.textContent = "Health Points: " + chars[computerSelected].health;
 
-    } else if ($("#playerDiv").find('img').length == 0) {
+      } else if ($("#playerDiv").find('img').length == 0) {
+        console.log("I'm working, you're just an idiot.")
         $(event.currentTarget).appendTo("#playerDiv");
         playerSelected = event.target.id;
         playerAttackHTML.textContent = "Attack Power: " + chars[playerSelected].attack;
         playerHealthHTML.textContent = "Health Points: " + chars[playerSelected].health;
+      }
     }
 });
 
