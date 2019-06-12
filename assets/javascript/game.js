@@ -159,7 +159,7 @@ $("#fightBtn").click( () => {
 
 
 
-  $(".imgStyles").click(function (event) {
+  $(document).on('click', ".imgStyles", function (event) {
     console.log("I detected the class of imgStyles being clicked");
     
     if (gameRunning){
