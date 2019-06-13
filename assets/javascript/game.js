@@ -51,29 +51,29 @@ function resetGame() {
   $("#computerDiv").children("img").detach();
 
     //resetsObjects
-    chars["peas"].attack = 5;
-    chars["peas"].health = 150;
-    chars["peas"].counterAttack = 10;
+    chars["peas"].attack = 50;
+    chars["peas"].health = 200;
+    chars["peas"].counterAttack = 50;
 
     
-    chars["broccoli"].attack = 5;
-    chars["broccoli"].health = 100;
-    chars["broccoli"].counterAttack = 10;
+    chars["broccoli"].attack = 40;
+    chars["broccoli"].health = 210;
+    chars["broccoli"].counterAttack = 40;
 
     
-    chars["dragonfruit"].attack = 5;
-    chars["dragonfruit"].health = 100;
-    chars["dragonfruit"].counterAttack = 10;
+    chars["dragonfruit"].attack = 30;
+    chars["dragonfruit"].health = 290;
+    chars["dragonfruit"].counterAttack = 30;
 
     
-    chars["carrots"].attack = 5;
-    chars["carrots"].health = 100;
+    chars["carrots"].attack = 10;
+    chars["carrots"].health = 400;
     chars["carrots"].counterAttack = 10;
 
     
-    chars["tomato"].attack = 5;
-    chars["tomato"].health = 100;
-    chars["tomato"].counterAttack = 10;
+    chars["tomato"].attack = 20;
+    chars["tomato"].health = 340;
+    chars["tomato"].counterAttack = 20;
 
     //resets Attack Value
     newAttack = 0;
