@@ -10,48 +10,68 @@
 </head>
 
 <body>
-<div class="container">
-    <h1>Which vegetable (or dragonfruit) will win? You decide!</h1>
+    <div class="container">
+        <h1>Which vegetable (or dragonfruit) will win? You decide!</h1>
 
-    <div id="imgsDiv">
-        <img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas">
-        <img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli">
-        <img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit">
-        <img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots">
-        <img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato">
-    </div>
+        <div id="imgsDiv">
+            <div class="imgWrapperDiv">
+                <img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas">
+                <label for="peas" class="textWrapper">Attack/Counter Attack: 50<br>Health: 200</label>
+            </div>
 
-    <button id="playNow">Play Now</button>
+            <div class="imgWrapperDiv">
+                <img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli">
+                <label for="broccoli" class="textWrapper">Attack/Counter Attack: 40<br>Health: 210</label>
+            </div>
 
+            <div class="imgWrapperDiv">
+                <img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit">
+                <label for="dragonfruit" class="textWrapper">Attack/Counter Attack: 30<br>Health: 290</label>
+            </div>
 
+            <div class="imgWrapperDiv">
+                <img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots">
+                <label for="carrots" class="textWrapper">Attack/Counter Attack: 10<br>Health: 400</label>
+            </div>
 
-    <section id="gameSpace">
-        
-    <div id="alertDiv">
-        <h1 id="alertHeader"></h1>
-        <p id="alertSpace"></p>
-        <p id="computerAlertSpace"></p>
-    </div>
-
-    <div id="flex-item">
-            <div id="playerDiv">
-            <p id="playerAttack"></p>
-            <p id="playerHP"></p>
+            <div class="imgWrapperDiv">
+                <img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato">
+                <label for="tomato" class="textWrapper">Attack/Counter Attack: 20<br>Health: 340</label>
+            </div>
 
         </div>
 
-        <div id="computerDiv">
+        <button id="playNow">Play Now</button>
 
-            <p id="computerCounterAttack"></p>
-            <p id="computerHealth"></p>
-        </div>
-        
+
+
+        <section id="gameSpace">
+
+            <div id="alertDiv">
+                <h1 id="alertHeader"></h1>
+                <p id="alertSpace"></p>
+                <p id="computerAlertSpace"></p>
+            </div>
+
+            <div id="flex-item">
+                <div id="playerDiv">
+                    <p id="playerAttack"></p>
+                    <p id="playerHP"></p>
+
+                </div>
+
+                <div id="computerDiv">
+
+                    <p id="computerCounterAttack"></p>
+                    <p id="computerHealth"></p>
+                </div>
+
+            </div>
+        </section>
+
+        <button id="fightBtn">Fight!</button>
+
     </div>
-    </section>
-    
-    <button id="fightBtn">Fight!</button>
-
-</div>
 
     <script src="assets/javascript/jquery-3.4.1.js"></script>
     <script src="assets/javascript/game.js"></script>

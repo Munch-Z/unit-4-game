@@ -82,7 +82,7 @@ function resetGame() {
      $("#playNow").show();
 
      //re-adds images to top div
-     $('#imgsDiv').html('<img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas"><img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli"> <img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit"> <img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots"> <img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato">');
+     $('#imgsDiv').html('<div class="imgWrapperDiv"><img src="assets/images/peas.jpeg" id="peas" class="imgStyles" alt="peas"><label for="peas" class="textWrapper">Attack/Counter Attack: 50<br>Health: 200</label></div><div class="imgWrapperDiv">  <img src="assets/images/broccoli.jpeg" id="broccoli" class="imgStyles" alt="broccoli"> <label for="broccoli" class="textWrapper">Attack/Counter Attack: 40<br>Health: 210</label></div><div class="imgWrapperDiv"><img src="assets/images/dragonfruit.jpeg" id="dragonfruit" class="imgStyles" alt="dragonfruit"><label for="dragonfruit" class="textWrapper">Attack/Counter Attack: 30<br>Health: 290</label></div><div class="imgWrapperDiv"><img src="assets/images/carrots.jpeg" id="carrots" class="imgStyles" alt="carrots"><label for="carrots" class="textWrapper">Attack/Counter Attack: 10<br>Health: 400</label></div><div class="imgWrapperDiv"><img src="assets/images/tomato.jpeg" id="tomato" class="imgStyles" alt="tomato"><label for="tomato" class="textWrapper">Attack/Counter Attack: 20<br>Health: 340</label></div>');
      
      //resets text areas
      playerAttackHTML.textContent = "";
@@ -170,11 +170,14 @@ $("#fightBtn").click( () => {
   $("#imgsDiv").on('click', ".imgStyles", function (event) {
     
     if (gameRunning){
+
+     
       
       if ($("#playerDiv").find('img').length == 1 && $("#computerDiv").find('img[data-value=active]:visible').length === 0) {
         computerSelected = event.target.id;
         $("#alertHeader").text('FIGHT!');
         $(event.currentTarget).attr("data-value", "active").prependTo("#computerDiv");
+        $("#imgsDiv").find('label[for="' + computerSelected + '"]').hide();
         counterAttackHTML.textContent = "Counter Attack Power: " + chars[computerSelected].counterAttack;
         computerHealthHTML.textContent = "Health Points: " + chars[computerSelected].health;
 
@@ -182,6 +185,7 @@ $("#fightBtn").click( () => {
         $(event.currentTarget).attr("data-value", "active").appendTo("#playerDiv");
         $("#alertHeader").text('Pick your opponent!');
         playerSelected = event.target.id;
+        $("#imgsDiv").find('label[for="' + playerSelected + '"]').hide();
         playerAttackHTML.textContent = "Attack Power: " + chars[playerSelected].attack;
         playerHealthHTML.textContent = "Health Points: " + chars[playerSelected].health;
       }

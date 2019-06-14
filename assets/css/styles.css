@@ -32,6 +32,7 @@ body{
 #gameSpace {
     display: flex;
     flex-direction: column;
+    margin-top: 15%;
 }
 
 #flex-item {
@@ -45,10 +46,30 @@ body{
     text-align: center;
 }
 
+#imgsDiv {
+ display: flex;
+}
+
 
 
 #playNow {
-    width: 150px;
-    height: 75px;
-    font-size: 25px;
+    width: 500px;
+    height: 250px;
+    font-size: 50px;
+    margin-top: 25%;
+}
+
+.imgWrapperDiv {
+    position: relative;
+    width: 200px;
+}
+
+.textWrapper {
+    position: absolute;
+    color:  #ffffff;
+    text-align: center;
+    width: 250px;
+    top: 175px;
+    left: -35px;
+    padding: 10px 0px;
 }
