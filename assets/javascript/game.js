@@ -11,30 +11,14 @@ let computerHealthHTML = document.getElementById("computerHealth");
 
 let chars = {
 "peas": {
-     attack : 50,
-     health : 200,
-     counterAttack : 50,
   },
   "broccoli": {
-    attack : 40,
-    health : 210,
-    counterAttack : 40,
   },
   "dragonfruit": {
-    attack : 30,
-    health : 290,
-    counterAttack : 30,
   },
   "carrots": {
-    attack : 10,
-    health : 400,
-    counterAttack : 10,
   },
-  "tomato": {
-    attack : 20,
-    health : 340,
-    counterAttack : 20,
-    
+  "tomato": {    
   }
 };
 
@@ -43,37 +27,41 @@ let newAttack = 0;
 let gameRunning = false;
 
 
+function resetChars(){
+  chars["peas"].attack = 50;
+  chars["peas"].health = 200;
+  chars["peas"].counterAttack = 50;
+
+  
+  chars["broccoli"].attack = 40;
+  chars["broccoli"].health = 210;
+  chars["broccoli"].counterAttack = 40;
+
+  
+  chars["dragonfruit"].attack = 30;
+  chars["dragonfruit"].health = 290;
+  chars["dragonfruit"].counterAttack = 30;
+
+  
+  chars["carrots"].attack = 10;
+  chars["carrots"].health = 440;
+  chars["carrots"].counterAttack = 10;
+
+  
+  chars["tomato"].attack = 20;
+  chars["tomato"].health = 340;
+  chars["tomato"].counterAttack = 20;
+}
+
 
 function resetGame() {
+
+  resetChars();
+
     //removes remaining images
   $("#imgsDiv").children("img").detach();
   $("#playerDiv").children("img").detach();
   $("#computerDiv").children("img").detach();
-
-    //resetsObjects
-    chars["peas"].attack = 50;
-    chars["peas"].health = 200;
-    chars["peas"].counterAttack = 50;
-
-    
-    chars["broccoli"].attack = 40;
-    chars["broccoli"].health = 210;
-    chars["broccoli"].counterAttack = 40;
-
-    
-    chars["dragonfruit"].attack = 30;
-    chars["dragonfruit"].health = 290;
-    chars["dragonfruit"].counterAttack = 30;
-
-    
-    chars["carrots"].attack = 10;
-    chars["carrots"].health = 400;
-    chars["carrots"].counterAttack = 10;
-
-    
-    chars["tomato"].attack = 20;
-    chars["tomato"].health = 340;
-    chars["tomato"].counterAttack = 20;
 
     //resets Attack Value
     newAttack = 0;
@@ -95,6 +83,7 @@ function resetGame() {
 
      gameRunning = false;
 }
+
 
 $("#playNow").on("click", () => {
   gameRunning = true;
@@ -192,3 +181,4 @@ $("#fightBtn").click( () => {
     }
 });
 
+resetChars();
